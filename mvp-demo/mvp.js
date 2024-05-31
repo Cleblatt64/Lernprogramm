@@ -11,11 +11,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ############# Model ###########################################################################
 class Model {
-    constructor() {    }
+
+    constructor() {
+        this.fragList = [   {f:"0", a:["a","b","c","d"]},
+                            {f:"1", a:["a","b","c","d"]},
+                            {f:"2", a:["a","b","c","d"]},
+                            {f:"3", a:["a","b","c","d"]},
+                            {f:"4", a:["a","b","c","d"]}];
+    }
 
     // Holt eine Frage aus dem Array, zufällig ausgewählt oder vom Server
     getTask(nr) {
-        return "21 + 21";  // Aufgabe + Lösungen
+        return this.fragList[nr];  // Aufgabe + Lösungen
     }
     checkAnswer() {
         // TODO
@@ -25,7 +32,8 @@ class Model {
 // ############ Controller ########################################################################
 class Presenter {
     constructor() {
-        this.anr = 0;
+        this.correct = 0;
+        this.wrong = 0;
     }
 
     setModelAndView(m, v) {
@@ -35,10 +43,17 @@ class Presenter {
 
      // Holt eine neue Frage aus dem Model und setzt die View
     setTask() {
-        let frag = this.m.getTask(this.anr);
+        this.fnr = Math.floor(Math.random() * this.m.fragList.length);
+        let task = this.m.getTask(this.fnr);
+        let frag = task.f;
+        this.anr = Math.floor(Math.random() * 4);
+        View.inscribeButtons(this.anr, task.a[0], this.anr)
         View.renderText(frag);
+        let apos = 1;
         for (let i = 0; i < 4; i++) {
-            let wert = "42";
+            if (i==this.anr) continue;
+            let wert = task.a[apos];
+            apos++;
             let pos = i;
             View.inscribeButtons(i, wert, pos); // Tasten beschriften -> View -> Antworten
         }
@@ -47,6 +62,15 @@ class Presenter {
     // Prüft die Antwort, aktualisiert Statistik und setzt die View
     checkAnswer(answer) {
         console.log("Antwort: ", answer);
+        if (answer == this.anr){
+            console.log("correct answer");
+            this.correct++;
+        } else {
+            console.log("wrong answer");
+            this.wrong++;
+        }
+        console.log("correct: ",this.correct, " wrong: ",this.wrong);
+        this.setTask();
     }
 }
 
@@ -55,6 +79,8 @@ class View {
     constructor(p) {
         this.p = p;  // Presenter
         this.setHandler();
+        document.getElementById("main").style.visibility = "hidden";
+        this.firstTask = true;
     }
 
     setHandler() {
@@ -66,6 +92,8 @@ class View {
 
     start() {
         this.p.setTask();
+        document.getElementById("start").style.visibility = "hidden";
+        document.getElementById("main").style.visibility = "visible";
     }
 
     static inscribeButtons(i, text, pos) {
@@ -85,6 +113,12 @@ class View {
         let div = document.getElementById("boo");
         let p = document.createElement("p");
         p.innerHTML = text;
-        div.appendChild(p);
+        if (this.firstTask == true){
+            div.appendChild(p);
+            this.firstTask = false;
+        } else {
+            div.removeChild(div.lastChild);
+            div.appendChild(p);
+        }
     }
 }
