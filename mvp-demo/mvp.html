@@ -23,10 +23,18 @@
 
 <body>
 <header>Header</header>
-<nav>Navigation</nav>
+<nav>Themenauswahl
+    <button id="Tall">Allgemein Wissen</button>
+    <button id="Tmat">Mathematik</button>
+    <button id="Tint">Internettechnologien</button>
+</nav>
 <aside>Sidebar</aside>
 
-<main id="main">
+<main id="main" style="visibility: collapse;">
+    <progress id="progress" value="0" max="100"> </progress>
+
+    <div id="taskCount"> Frage 1/10 </div>
+
     <div id="boo">Aufgabe</div>
 
     <p> </p>
@@ -40,7 +48,12 @@
     <p id="text">Wähle die passende Antwort!</p>
 </main>
 
-<button id="start">Start</button>
+<main id="result" style="visibility: collapse;"> 
+    <div>Test abgeschlossen!</div>
+    <div id="resultCount">/10 Fragen wurden korrekt beantwortet</div>
+</main>
+
+<!--<button id="start">Start</button>-->
 
 <footer>Footer</footer>
 </body>
