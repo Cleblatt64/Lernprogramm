@@ -9,12 +9,14 @@ Hintergrundfarbe, Schriftfarbe und Schriftfamilie*/
 
 body {
     background-color: lightgrey;
-    height: 100vh;
+    min-height: 100%;
 
 }
 
 header {
-    background: #000000 url(bilder/dresden.jpg) no-repeat left top;
+    background: yellowgreen;
+    font-size: larger;
+    font-weight: 1000;
 }
 
 aside {
@@ -31,7 +33,7 @@ main {
 
 footer {
     background: Wheat;
-    text-align: center
+    text-align: center;
 }
 
 

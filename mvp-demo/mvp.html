@@ -22,18 +22,29 @@
 </head>
 
 <body>
-<header>Header</header>
-<nav>Themenauswahl
-    <button id="Tall">Allgemein Wissen</button>
-    <button id="Tmat">Mathematik</button>
-    <button id="Tint">Internettechnologien</button>
+<header>Lernprogramm</header>
+<nav>
+    <button id="Home">Hauptmenü</button>
 </nav>
-<aside>Sidebar</aside>
 
-<main id="main" style="visibility: collapse;">
-    <progress id="progress" value="0" max="100"> </progress>
+<main id="topic" style="display: block;">
+    <div>Bitte ein Thema wählen:</div>
+    <p></p>
+    <button id="Tall">Allgemein Wissen</button>
+    <p></p>
+    <button id="Tmat">Mathematik</button>
+    <p></p>
+    <button id="Tint">Internettechnologien</button>
+</main>
 
+<main id="main" style="display: none;">
     <div id="taskCount"> Frage 1/10 </div>
+
+    <p> </p>
+
+    <progress id="progress" value="0" max="100"> </progress>
+    <div id="percent">0% korrekt</div>
+
 
     <div id="boo">Aufgabe</div>
 
@@ -48,13 +59,18 @@
     <p id="text">Wähle die passende Antwort!</p>
 </main>
 
-<main id="result" style="visibility: collapse;"> 
+<main id="result" style="display: none;"> 
     <div>Test abgeschlossen!</div>
+    <p></p>
     <div id="resultCount">/10 Fragen wurden korrekt beantwortet</div>
+    <p></p>
+    <button id="restart">Neuer Versuch</button>
+    <p></p>
+    <button id="Home2">Zurück zum Hauptmenü</button>
 </main>
 
 <!--<button id="start">Start</button>-->
 
-<footer>Footer</footer>
 </body>
+<footer>Footer</footer>
 </html>

@@ -97,13 +97,15 @@ class Presenter {
         this.questionNr++;
         console.log("question Nr.", this.questionNr," correct: ",this.correct, " wrong: ",this.wrong);
         let progress = document.getElementById("progress");
-        progress.value = this.correct / this.questionNr * 100;
+        let pCorrect = Math.floor(this.correct / this.questionNr * 100);
+        progress.value = pCorrect
         document.getElementById("taskCount").innerHTML = "Frage " + (this.questionNr+1) + "/10";
+        document.getElementById("percent").innerHTML = pCorrect + "% korrekt";
         
         if (this.questionNr < 10){
             this.setTask();
         } else {
-            this.v.showResult(this.correct);
+            this.v.showResult(this.correct, pCorrect);
         }
     }
 }
@@ -124,13 +126,23 @@ class View {
         document.getElementById("Tall").addEventListener("click", this.Tall.bind(this), false);
         document.getElementById("Tmat").addEventListener("click", this.Tmat.bind(this), false);
         document.getElementById("Tint").addEventListener("click", this.Tint.bind(this), false);
+        document.getElementById("Home").addEventListener("click", this.home.bind(this), false);
+        document.getElementById("Home2").addEventListener("click", this.home.bind(this), false);
+        document.getElementById("restart").addEventListener("click", this.restart.bind(this), false);
     }
 
     start() {
         this.p.setTask();
         //document.getElementById("start").style.visibility = "hidden";
-        document.getElementById("main").style.visibility = "visible";
-        document.getElementById("result").style.visibility = "collapse";
+        document.getElementById("main").style.display = "block";
+        document.getElementById("result").style.display = "none";
+        document.getElementById("topic").style.display = "none";
+    }
+
+    home() {
+        document.getElementById("main").style.display = "none";
+        document.getElementById("result").style.display = "none";
+        document.getElementById("topic").style.display = "block";
     }
 
     setup(T) {
@@ -138,8 +150,13 @@ class View {
         this.p.correct = 0;
         this.p.wrong = 0;
         this.p.questionNr = 0;
+        progress.value = 0;
+        document.getElementById("taskCount").innerHTML = "Frage 1/10";
+        document.getElementById("percent").innerHTML = "0% korrekt";
         this.start();
     }
+
+    restart() {this.setup(this.Topic)}
 
     Tall() {this.setup("Tall")}
     Tmat() {this.setup("Tmat")}
@@ -157,10 +174,10 @@ class View {
         }
     }
 
-    showResult(correct) {
-        document.getElementById("main").style.visibility = "collapse";
-        document.getElementById("resultCount").innerHTML = correct + "/10 Fragen wurden korrekt beantwortet";
-        document.getElementById("result").style.visibility = "visible";
+    showResult(correct, pCorrect) {
+        document.getElementById("main").style.display = "none";
+        document.getElementById("resultCount").innerHTML = correct + "/10 korrekte Antworten (" + pCorrect +"%)";
+        document.getElementById("result").style.display = "block";
     }
 
     static renderText(text) {
