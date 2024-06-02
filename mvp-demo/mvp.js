@@ -13,23 +13,94 @@ document.addEventListener('DOMContentLoaded', function () {
 class Model {
 
     constructor() {
-        this.fragListAll = [{f:"0", a:["a","b","c","d"]},
-                            {f:"1", a:["a","b","c","d"]},
-                            {f:"2", a:["a","b","c","d"]},
-                            {f:"3", a:["a","b","c","d"]},
-                            {f:"4", a:["a","b","c","d"]}];
 
-        this.fragListMat = [{f:"5", a:["a","b","c","d"]},
-                            {f:"6", a:["a","b","c","d"]},
-                            {f:"7", a:["a","b","c","d"]},
-                            {f:"8", a:["a","b","c","d"]},
-                            {f:"9", a:["a","b","c","d"]}];
+        //Fragen und Antworten wurden vom Chatbot "Aria" generiert.
 
-        this.fragListInt = [{f:"10", a:["a","b","c","d"]},
-                            {f:"11", a:["a","b","c","d"]},
-                            {f:"12", a:["a","b","c","d"]},
-                            {f:"13", a:["a","b","c","d"]},
-                            {f:"14", a:["a","b","c","d"]}];
+        this.fragListAll = [{a:"Welches ist das größte Säugetier der Welt?", 
+                                l:["Wal","Nashorn","Giraffe","Elefant"]},
+                            {a:"Was ist die Hauptstadt von Australien?", 
+                                l:["Canberra","Sydney","Melbourne","Perth"]},
+                            {a:"Wer schrieb das Drama \"Romeo und Julia\"?", 
+                                l:["William Shakespeare","Johann Wolfgang von Goethe","Friedrich Schiller","Heinrich Heine"]},
+                            {a:"Welche Farbe hat die Null auf dem Roulette-Rad?", 
+                                l:["Grün","Rot","Schwarz","Blau"]},
+                            {a:"Wie viele Kontinente gibt es auf der Erde?", 
+                                l:["7","5","6","8"]}, 
+                            {a:"Welches ist das längste Fluss der Welt?", 
+                                l:["Nil","Amazonas","Mississippi","Jangtse"]}, 
+                            {a:"Wer malte die Mona Lisa?", 
+                                l:["Leonardo da Vinci","Vincent van Gogh","Pablo Picasso","Claude Monet"]}, 
+                            {a:"Wann endete der Erste Weltkrieg?", 
+                                l:["1918","1939","1945","1905"]}, 
+                            {a:"Was ist die chemische Formel für Wasser?",
+                                 l:["H2O","CO2","NaCl","C6H12O6"]}, 
+                            {a:"Welches ist das meistgesprochene Sprache der Welt?", 
+                                l:["Mandarin","Englisch","Spanisch","Hindi"]}, 
+                            {a:"Welcher Planet ist der größte in unserem Sonnensystem?", 
+                                l:["Jupiter","Mars","Venus","Saturn"]}, 
+                            {a:"In welcher Stadt steht der Eiffelturm?", 
+                                l:["Paris","Rom","London","Berlin"]}, 
+                            {a:"Was ist die Hauptstadt von Japan?", 
+                                l:["Tokio","Peking","Seoul","Bangkok"]}, 
+                            {a:"Welches ist das höchste Gebäude der Welt?", 
+                                l:["Burj Khalifa","Shanghai Tower","One World Trade Center","Taipei 101"]}, 
+                            {a:"Wer erfand das Telefon?", 
+                                l:["Alexander Graham Bell","Thomas Edison","Nikola Tesla","Albert Einstein"]}, 
+                            {a:"Welches ist das größte Land der Welt?", 
+                                l:["Russland","Kanada","China","USA"]}, 
+                            {a:"Wie viele Beine hat eine Spinne?", 
+                                l:["8","6","10","12"]}, 
+                            {a:"Wer war der erste Mensch im Weltraum?", 
+                                l:["Juri Gagarin","Neil Armstrong","Buzz Aldrin","Valentina Tereshkova"]}, 
+                            {a:"Welches ist das chemische Symbol für Gold?", 
+                                l:["Au","Ag","Fe","Cu"]}];
+
+        this.fragListMat = [{a:"5", l:["a","b","c","d"]},
+                            {a:"6", l:["a","b","c","d"]},
+                            {a:"7", l:["a","b","c","d"]},
+                            {a:"8", l:["a","b","c","d"]},
+                            {a:"9", l:["a","b","c","d"]}];
+
+        this.fragListInt = [{a:"Was ist HTML?", 
+                                l:["Hypertext Markup Language","High Tech Multiplayer Language","Hyperlink and Text Markup Language","Home Tool Markup Language"]}, 
+                            {a:"Welche Programmiersprache wird häufig für die Entwicklung von Webanwendungen verwendet?", 
+                                l:["JavaScript","Java","C#","Python"]}, 
+                            {a:"Was ist ein URL?", 
+                                l:["Uniform Resource Locator","Universal Registration Link","Uniform Reference Language","Universal Rendering Language"]}, 
+                            {a:"Welches Protokoll wird verwendet, um Webseiten sicher zu übertragen?", 
+                                l:["HTTPS","HTTP","FTP","TCP"]}, 
+                            {a:"Was ist ein Cookie in Bezug auf das Internet?", 
+                                l:["Eine kleine Textdatei, die vom Browser gespeichert wird","Ein Online-Bezahlsystem","Ein neuer Webbrowser","Eine Art von Spam-E-Mails"]}, 
+                            {a:"Welche Firma entwickelte das Betriebssystem Android?", 
+                                l:["Google","Apple","Microsoft","Samsung"]}, 
+                            {a:"Was ist ein VPN?", 
+                                l:["Virtual Private Network","Very Personal Navigator","Virtual Programming Network","Visual Private Node"]}, 
+                            {a:"Welches ist ein beliebtes Content-Management-System (CMS) für Websites?", 
+                                l:["WordPress","Photoshop","Excel","PowerPoint"]}, 
+                            {a:"Was ist ein DNS?", 
+                                l:["Domain Name System","Data Network Server","Digital Naming Service","Dynamic Network Security"]}, 
+                            {a:"Was ist ein Router in einem Netzwerk?", 
+                                l:["Ein Gerät, das den Datenverkehr zwischen verschiedenen Netzwerken leitet","Ein schneller Internetbrowser","Ein drahtloses Kommunikationsgerät","Ein spezielles Kabel für schnelle Datenübertragung"]}, 
+                            {a:"Welches ist ein bekanntes soziales Netzwerk?", 
+                                l:["Facebook","Netflix","Amazon","Spotify"]}, 
+                            {a:"Was ist ein ISP?", 
+                                l:["Internetdienstanbieter","Integriertes Sicherheitspaket","Internationales Suchportal","Interaktives Streaming-Protokoll"]}, 
+                            {a:"Was ist eine IP-Adresse?", 
+                                l:["Eine eindeutige Kennung für ein Gerät im Netzwerk","Ein spezieller Webbrowser","Ein Internetprotokoll","Eine Art von Computer-Virus"]}, 
+                            {a:"Was ist ein Trojaner in Bezug auf Computer?", 
+                                l:["Schadsoftware, die sich als nützliche Anwendung tarnt","Ein schneller Prozessor","Eine spezielle Art von Computermaus","Ein alter Computerstandard"]}, 
+                            {a:"Was ist ein HTTP-Statuscode 404?", 
+                                l:["Seite nicht gefunden","Serverfehler","Erfolgreiche Anfrage","Weiterleitung"]}, 
+                            {a:"Was ist ein Cloudspeicher?", 
+                                l:["Online-Speicherplatz für Dateien","Ein neuer Internetbrowser","Ein schnelles WLAN-Netzwerk","Ein spezielles Netzwerkkabel"]}, 
+                            {a:"Was ist ein E-Mail-Protokoll zum Senden von Nachrichten?", 
+                                l:["SMTP","FTP","HTTP","POP"]}, 
+                            {a:"Was ist ein Podcast?", 
+                                l:["Eine Serie von digitalen Audio- oder Videodateien","Ein spezielles Antivirenprogramm","Ein Online-Radiosender","Ein soziales Netzwerk für Musiker"]}, 
+                            {a:"Was ist ein Spam in Bezug auf E-Mails?", 
+                                l:["Unerwünschte oder unerwünschte E-Mails","Ein neuer E-Mail-Filter","Ein spezieller E-Mail-Virus","Ein schneller E-Mail-Server"]}, 
+                            {a:"Was ist ein Browser?", 
+                                l:["Ein Programm zum Anzeigen von Webseiten","Ein schneller Prozessor","Ein spezielles Computerkabel","Ein mobiler Internetanbieter"]}];
     }
 
     // Holt eine Frage aus dem Array, zufällig ausgewählt oder vom Server
@@ -70,14 +141,14 @@ class Presenter {
      // Holt eine neue Frage aus dem Model und setzt die View
     setTask() {
         let task = this.m.getTask(this.v.Topic);
-        let frag = task.f;
+        let frag = task.a;
         this.anr = Math.floor(Math.random() * 4);
-        View.inscribeButtons(this.anr, task.a[0], this.anr)
+        View.inscribeButtons(this.anr, task.l[0], this.anr)
         View.renderText(frag);
         let apos = 1;
         for (let i = 0; i < 4; i++) {
             if (i==this.anr) continue;
-            let wert = task.a[apos];
+            let wert = task.l[apos];
             apos++;
             let pos = i;
             View.inscribeButtons(i, wert, pos); // Tasten beschriften -> View -> Antworten

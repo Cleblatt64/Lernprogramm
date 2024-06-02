@@ -1,11 +1,11 @@
 /*Formatierung für den body
 Hintergrundfarbe, Schriftfarbe und Schriftfamilie*/
 * {
-    /*
-        margin: 0;
+    
+        margin: 10;
         padding: 0;
-    */
-}
+    
+} 
 
 body {
     background-color: lightgrey;
@@ -31,9 +31,25 @@ main {
     background: LightYellow;
 }
 
+#topic>div {
+    font-size: 20px;
+}
+
+div {
+    font-size: large;
+}
+
 footer {
     background: Wheat;
     text-align: center;
+}
+
+button {
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 
