@@ -55,11 +55,16 @@ class Model {
                             {a:"Welches ist das chemische Symbol für Gold?", 
                                 l:["Au","Ag","Fe","Cu"]}];
 
-        this.fragListMat = [{a:"5", l:["a","b","c","d"]},
-                            {a:"6", l:["a","b","c","d"]},
-                            {a:"7", l:["a","b","c","d"]},
-                            {a:"8", l:["a","b","c","d"]},
-                            {a:"9", l:["a","b","c","d"]}];
+        this.fragListMat = [{a:"a^2-b^2", l:["(a+b)(a-b)","-ab^2","(a-b)^2","a^2+2ab+b^2"]},
+                            {a:"\\frac{a^3}{a^2}", l:["a","a^2","0","1"]},
+                            {a:"\\sqrt{a}*\\sqrt{b}", l:["\\sqrt{ab}","a*b","0","ab^2"]},
+                            {a:"a^x/a^y", l:["a^{x-y}","a^{x+y}","(x-y)^a","x/y"]},
+                            {a:"(a+b)^3", l:["a^3+3a^2b+3ab^2+b^3","a^3+3ab+b^3","(a+b)*(a+b)","3(a+b)"]},
+                            {a:"\\frac{a*b}{c}", l:["ab/c","c/ab","ab*c","\\frac{a}{c}+\\frac{b}{c}"]},
+                            {a:"a^2+2ab+b^2", l:["(a+b)^2","2ab","a^b","2^{ab}"]},
+                            {a:"\\frac{a^2}{a}", l:["a","-a","0","1"]},
+                            {a:"a^{-n}*a^n", l:["1","0","a","a^2"]},
+                            {a:"a*a*a", l:["a^3","3^a","a+a+a","\\sqrt{a}^5"]}];
 
         this.fragListInt = [{a:"Was ist HTML?", 
                                 l:["Hypertext Markup Language","High Tech Multiplayer Language","Hyperlink and Text Markup Language","Home Tool Markup Language"]}, 
@@ -142,17 +147,22 @@ class Presenter {
     setTask() {
         let task = this.m.getTask(this.v.Topic);
         let frag = task.a;
+        if (this.v.Topic = "Tmat") {frag = "$" + frag +"$"}
         this.anr = Math.floor(Math.random() * 4);
-        View.inscribeButtons(this.anr, task.l[0], this.anr)
+        let antw = task.l[0];
+        if (this.v.Topic = "Tmat") {antw = "$" + antw +"$"}
+        View.inscribeButtons(this.anr, antw, this.anr);
         View.renderText(frag);
         let apos = 1;
         for (let i = 0; i < 4; i++) {
             if (i==this.anr) continue;
-            let wert = task.l[apos];
+            antw = task.l[apos];
+            if (this.v.Topic = "Tmat") {antw = "$" + antw +"$"}
             apos++;
             let pos = i;
-            View.inscribeButtons(i, wert, pos); // Tasten beschriften -> View -> Antworten
+            View.inscribeButtons(i, antw, pos); // Tasten beschriften -> View -> Antworten
         }
+        window.dispatchEvent(new Event('Katex'));
     }
 
     // Prüft die Antwort, aktualisiert Statistik und setzt die View
@@ -234,7 +244,7 @@ class View {
     Tint() {this.setup("Tint")}
 
     static inscribeButtons(i, text, pos) {
-        document.querySelectorAll("#answer > *")[i].textContent = text;
+        document.querySelectorAll("#answer > * > *")[i].innerHTML = text;
         document.querySelectorAll("#answer > *")[i].setAttribute("number", pos);
     }
 
