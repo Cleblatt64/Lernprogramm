@@ -33,7 +33,7 @@ class Model {
                             {a:"Wann endete der Erste Weltkrieg?", 
                                 l:["1918","1939","1945","1905"]}, 
                             {a:"Was ist die chemische Formel für Wasser?",
-                                 l:["H2O","CO2","NaCl","C6H12O6"]}, 
+                                 l:["$H_2O$","$CO_2$","$NaCl$","$C_6H_{12}O_6$"]}, 
                             {a:"Welches ist das meistgesprochene Sprache der Welt?", 
                                 l:["Mandarin","Englisch","Spanisch","Hindi"]}, 
                             {a:"Welcher Planet ist der größte in unserem Sonnensystem?", 
@@ -56,7 +56,7 @@ class Model {
                                 l:["Au","Ag","Fe","Cu"]}];
 
         this.fragListMat = [{a:"a^2-b^2", l:["(a+b)(a-b)","-ab^2","(a-b)^2","a^2+2ab+b^2"]},
-                            {a:"\\frac{a^3}{a^2}", l:["a","a^2","0","1"]},
+                            {a:"{a^3}/{a^2}", l:["a","a^2","0","1"]},
                             {a:"\\sqrt{a}*\\sqrt{b}", l:["\\sqrt{ab}","a*b","0","ab^2"]},
                             {a:"a^x/a^y", l:["a^{x-y}","a^{x+y}","(x-y)^a","x/y"]},
                             {a:"(a+b)^3", l:["a^3+3a^2b+3ab^2+b^3","a^3+3ab+b^3","(a+b)*(a+b)","3(a+b)"]},
