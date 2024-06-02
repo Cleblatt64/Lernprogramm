@@ -147,17 +147,17 @@ class Presenter {
     setTask() {
         let task = this.m.getTask(this.v.Topic);
         let frag = task.a;
-        if (this.v.Topic = "Tmat") {frag = "$" + frag +"$"}
+        if (this.v.Topic == "Tmat") {frag = "$" + frag +"$"}
         this.anr = Math.floor(Math.random() * 4);
         let antw = task.l[0];
-        if (this.v.Topic = "Tmat") {antw = "$" + antw +"$"}
+        if (this.v.Topic == "Tmat") {antw = "$" + antw +"$"}
         View.inscribeButtons(this.anr, antw, this.anr);
         View.renderText(frag);
         let apos = 1;
         for (let i = 0; i < 4; i++) {
             if (i==this.anr) continue;
             antw = task.l[apos];
-            if (this.v.Topic = "Tmat") {antw = "$" + antw +"$"}
+            if (this.v.Topic == "Tmat") {antw = "$" + antw +"$"}
             apos++;
             let pos = i;
             View.inscribeButtons(i, antw, pos); // Tasten beschriften -> View -> Antworten
